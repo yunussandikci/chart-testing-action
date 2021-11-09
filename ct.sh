@@ -60,7 +60,9 @@ install_chart_testing() {
     local cache_dir="$RUNNER_TOOL_CACHE/ct/$version/$arch"
     local venv_dir="$cache_dir/venv"
 
+    echo "lets check"
     if [[ ! -d "$cache_dir" ]]; then
+        echo "installl running"
         mkdir -p "$cache_dir"
 
         echo "Installing chart-testing..."
@@ -80,6 +82,8 @@ install_chart_testing() {
 
         echo 'Installing Yamale...'
         pip3 install yamale==3.0.4
+    else
+        echo "installl not running"
     fi
 
     # https://github.com/helm/chart-testing-action/issues/62
@@ -96,4 +100,5 @@ install_chart_testing() {
     "$cache_dir/ct" version
 }
 
+env
 main "$@"
